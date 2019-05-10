@@ -1,0 +1,28 @@
+width=100
+length=100
+seed=1234;
+rng(seed,'twister');
+
+pic=zeros(width,length,3);
+temp=zeros(1,3);
+r=32;
+g=32;
+b=32;
+for m=randperm(256,r)-1
+    for n=randperm(256,g)-1
+        for l=randperm(256,b)-1
+            temp(1,:)=[m n l];
+            for k=1:3
+               for i=1:width
+                  for j=1:length
+                      pic(i,j,k)=temp(k);
+                  end
+               end
+            end
+            pic=uint8(pic);
+            code=lower([dec2hex(temp(1),2),dec2hex(temp(2),2),dec2hex(temp(3),2)]);
+            name=['0x',code,'.jpg'];
+            imwrite(pic,name);
+        end
+    end
+end
