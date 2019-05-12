@@ -1,14 +1,13 @@
-width=100 % width & length of the pic
-length=100
-
+width=100; % width & length of the pic
+length=100;
 seed=1234; % random seed of the generator
-rng(seed,'twister');
-
-pic=zeros(width,length,3);
-temp=zeros(1,3);
 r=32; % amount of generated values in each channel
 g=32;
 b=32;
+
+rng(seed,'twister');
+pic=zeros(width,length,3);
+temp=zeros(1,3);
 for m=randperm(256,r)-1 % generate random values
     for n=randperm(256,g)-1
         for l=randperm(256,b)-1
